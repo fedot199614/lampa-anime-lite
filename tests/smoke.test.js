@@ -9,13 +9,13 @@ new vm.Script(src);
 assert(/^\(function\(\)\{'use strict';/.test(src),'plugin must stay wrapped in strict IIFE');
 
 // Current architecture
-has("VERSION='0.7.3-fix'","unexpected plugin version");
+has("VERSION='0.7.4-hotfix'","unexpected plugin version");
 has("Lampa.Component.add('anime_lite',Main)","main component not registered");
 has("Lampa.Component.add('anime_lite_results',Results)","results component not registered");
 has("new Lampa.InteractionMain","native Lampa navigation missing");
 has("addMenu('Anime Lite'","sidebar menu missing");
 has("menu__ico","sidebar icon missing");
-has("anime_lite_ready_fix","duplicate-init guard missing");
+has("anime_lite_ready_hotfix","duplicate-init guard missing");
 
 // API/auth safety
 has("API='https://api.yani.tv'","Yani API missing");
@@ -56,6 +56,8 @@ has("api.jikan.moe/v4/anime","internet poster fallback missing");
 has("anime-lite-badge--eps","episode badge missing");
 has("anime-lite-badge--rating","rating badge missing");
 has("anime-lite-badge--quality","quality badge missing");
+has("function decorateRows(rootEl,rows)","post-build badge overlay missing");
+has("decorateRows(self.render(),rows)","main poster badges not applied after render");
 has("function qualityShort(q)","short quality formatter missing");
 has("'4K'","4K quality label missing");
 has("'FHD'","FHD quality label missing");
