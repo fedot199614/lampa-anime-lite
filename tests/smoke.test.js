@@ -9,13 +9,13 @@ new vm.Script(src);
 assert(/^\(function\(\)\{'use strict';/.test(src),'plugin must stay wrapped in strict IIFE');
 
 // Current architecture
-has("VERSION='0.7.9-voice'","unexpected plugin version");
+has("VERSION='0.7.10-panel'","unexpected plugin version");
 has("Lampa.Component.add('anime_lite',Main)","main component not registered");
 has("Lampa.Component.add('anime_lite_results',Results)","results component not registered");
 has("new Lampa.InteractionMain","native Lampa navigation missing");
 has("addMenu('Anime Lite'","sidebar menu missing");
 has("menu__ico","sidebar icon missing");
-has("anime_lite_ready_voice9","duplicate-init guard missing");
+has("anime_lite_ready_panel10","duplicate-init guard missing");
 
 // API/auth safety
 has("API='https://api.yani.tv'","Yani API missing");
@@ -35,6 +35,7 @@ has("anime_lite_voice","persistent preferred voice setting missing");
 has("function autoChoice(a,c)","smart auto-source chooser missing");
 has("Авто выбрал: ","auto-source disclosure missing");
 has("Приоритетная озвучка","voice priority UI missing");
+has("action:'voice'","voice action missing from detail panel");
 has("seen={auto:'Авто — любая озвучка'}","dynamic available-voice filter missing");
 has("Сохранённая озвучка сейчас недоступна","missing unavailable preferred-voice fallback");
 has("preferred.length","preferred voice fallback logic missing");
@@ -44,9 +45,9 @@ has("function detailScreen(c,d)","cinema detail screen missing");
 has("function textVal(x,keys)","object metadata normalizer missing");
 has("function ratingVal(x)","rating normalizer missing");
 has("height:38vh","compact hero height missing");
-has("function homeHero(host,c)","dynamic home backdrop missing");
-has("function bindHero(host,rows)","card focus backdrop binding missing");
-has("anime-lite-home-bg","crossfade backdrop CSS missing");
+no("function homeHero(host,c)","home must not contain detail hero");
+no("function bindHero(host,rows)","home must not bind detail backdrop");
+no("anime-lite-home-bg","home detail backdrop CSS must be removed");
 has("anime-lite-chip","detail metadata chips missing");
 has("anime-lite-action--primary","primary watch action missing");
 no("min-height:68vh","oversized old hero must not return");
