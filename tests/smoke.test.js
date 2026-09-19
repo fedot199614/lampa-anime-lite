@@ -9,13 +9,13 @@ new vm.Script(src);
 assert(/^\(function\(\)\{'use strict';/.test(src),'plugin must stay wrapped in strict IIFE');
 
 // Current architecture
-has("VERSION='0.7.8-visual'","unexpected plugin version");
+has("VERSION='0.7.9-voice'","unexpected plugin version");
 has("Lampa.Component.add('anime_lite',Main)","main component not registered");
 has("Lampa.Component.add('anime_lite_results',Results)","results component not registered");
 has("new Lampa.InteractionMain","native Lampa navigation missing");
 has("addMenu('Anime Lite'","sidebar menu missing");
 has("menu__ico","sidebar icon missing");
-has("anime_lite_ready_visual8","duplicate-init guard missing");
+has("anime_lite_ready_voice9","duplicate-init guard missing");
 
 // API/auth safety
 has("API='https://api.yani.tv'","Yani API missing");
@@ -31,13 +31,13 @@ has("clearInterval(timer)","polling cleanup missing");
 has("/anime/'+encodeURIComponent(c.yani_id)+'/videos","video loading missing");
 has("★ Авто — ","auto source selector missing");
 has("PROVIDER_SCORE","provider ranking missing");
-has("anime_lite_provider","persistent preferred provider setting missing");
+has("anime_lite_voice","persistent preferred voice setting missing");
 has("function autoChoice(a,c)","smart auto-source chooser missing");
 has("Авто выбрал: ","auto-source disclosure missing");
-has("Приоритет источника","provider priority UI missing");
-has("seen={auto:1}","dynamic available-provider filter missing");
-has("Сохранённый источник сейчас не найден","missing unavailable preferred-provider fallback");
-has("preferred.length","preferred provider fallback logic missing");
+has("Приоритетная озвучка","voice priority UI missing");
+has("seen={auto:'Авто — любая озвучка'}","dynamic available-voice filter missing");
+has("Сохранённая озвучка сейчас недоступна","missing unavailable preferred-voice fallback");
+has("preferred.length","preferred voice fallback logic missing");
 has("anime_lite_history","watch history storage missing");
 has("Продолжить просмотр","continue watching rail missing");
 has("function detailScreen(c,d)","cinema detail screen missing");
@@ -68,7 +68,9 @@ has("anime_lite_schedule","schedule component missing");
 has("anime-lite-tools","tools bar CSS missing");
 has("POSTER_ACTIVE<2","poster fallback concurrency limit missing");
 has("Расписание · ","dated schedule UI missing");
-has("if(quiet&&self.empty)self.empty()","poll refresh must clear old rows");
+no("if(quiet&&self.empty)self.empty()","polling must not trigger Lampa empty state");
+has("body.find('.items-line').remove()","row refresh missing");
+has("anime-lite-detail-poster","detail poster visual missing");
 no("scheduleRows(schedule).concat","schedule must not be mixed into home rows");
 no("self.build([navRow()]","placeholder navigation cards must not be built");
 
