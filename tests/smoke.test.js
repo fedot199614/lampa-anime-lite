@@ -9,13 +9,13 @@ new vm.Script(src);
 assert(/^\(function\(\)\{'use strict';/.test(src),'plugin must stay wrapped in strict IIFE');
 
 // Current architecture
-has("VERSION='0.6.3-ui1'","unexpected plugin version");
+has("VERSION='0.6.4-ui2'","unexpected plugin version");
 has("Lampa.Component.add('anime_lite',Main)","main component not registered");
 has("Lampa.Component.add('anime_lite_results',Results)","results component not registered");
 has("new Lampa.InteractionMain","native Lampa navigation missing");
 has("addMenu('Anime Lite'","sidebar menu missing");
 has("menu__ico","sidebar icon missing");
-has("anime_lite_ready_ui1","duplicate-init guard missing");
+has("anime_lite_ready_ui2","duplicate-init guard missing");
 
 // API/auth safety
 has("API='https://api.yani.tv'","Yani API missing");
@@ -40,6 +40,14 @@ has("Расписание выхода","schedule rail missing");
 has("api.jikan.moe/v4/anime","internet poster fallback missing");
 has("anime-lite-badge--eps","episode badge missing");
 has("anime-lite-badge--rating","rating badge missing");
+has("anime-lite-badge--done","completion badge missing");
+has("anime-lite-badge--air","ongoing badge missing");
+has("anime-lite-badge--season","season count badge missing");
+has("seasons_count","season metadata missing");
+has("next_date","next episode metadata missing");
+has("СЕЗОН ЗАВЕРШЁН","completed season state missing");
+has("ЗАВЕРШЁН","completed title state missing");
+has("ОНГОИНГ","ongoing state missing");
 has("aspect-ratio:2/3","cinema poster ratio missing");
 has("backdrop-filter:none","heavy backdrop blur must stay disabled");
 
