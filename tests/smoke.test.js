@@ -9,13 +9,13 @@ new vm.Script(src);
 assert(/^\(function\(\)\{'use strict';/.test(src),'plugin must stay wrapped in strict IIFE');
 
 // Current architecture
-has("VERSION='0.7.4-hotfix'","unexpected plugin version");
+has("VERSION='0.7.5-ui'","unexpected plugin version");
 has("Lampa.Component.add('anime_lite',Main)","main component not registered");
 has("Lampa.Component.add('anime_lite_results',Results)","results component not registered");
 has("new Lampa.InteractionMain","native Lampa navigation missing");
 has("addMenu('Anime Lite'","sidebar menu missing");
 has("menu__ico","sidebar icon missing");
-has("anime_lite_ready_hotfix","duplicate-init guard missing");
+has("anime_lite_ready_ui5","duplicate-init guard missing");
 
 // API/auth safety
 has("API='https://api.yani.tv'","Yani API missing");
@@ -29,10 +29,10 @@ has("clearInterval(timer)","polling cleanup missing");
 
 // Features
 has("/anime/'+encodeURIComponent(c.yani_id)+'/videos","video loading missing");
-has("★ Авто — лучший источник","auto source selector missing");
+has("★ Авто — ","auto source selector missing");
 has("PROVIDER_SCORE","provider ranking missing");
 has("anime_lite_provider","persistent preferred provider setting missing");
-has("function autoChoice(a)","smart auto-source chooser missing");
+has("function autoChoice(a,c)","smart auto-source chooser missing");
 has("Авто выбрал: ","auto-source disclosure missing");
 has("Приоритет источника","provider priority UI missing");
 has("seen={auto:1}","dynamic available-provider filter missing");
@@ -41,6 +41,10 @@ has("preferred.length","preferred provider fallback logic missing");
 has("anime_lite_history","watch history storage missing");
 has("Продолжить просмотр","continue watching rail missing");
 has("function detailScreen(c,d)","cinema detail screen missing");
+has("function textVal(x,keys)","object metadata normalizer missing");
+has("function ratingVal(x)","rating normalizer missing");
+has("height:38vh","compact hero height missing");
+no("min-height:68vh","oversized old hero must not return");
 has("anime-lite-hero","detail backdrop hero missing");
 has("▶ Продолжить · серия ","resume action missing");
 has("function search()","anime search missing");
