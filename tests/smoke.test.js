@@ -9,13 +9,13 @@ new vm.Script(src);
 assert(/^\(function\(\)\{'use strict';/.test(src),'plugin must stay wrapped in strict IIFE');
 
 // Current architecture
-has("VERSION='0.7.1-sources'","unexpected plugin version");
+has("VERSION='0.7.2-quality'","unexpected plugin version");
 has("Lampa.Component.add('anime_lite',Main)","main component not registered");
 has("Lampa.Component.add('anime_lite_results',Results)","results component not registered");
 has("new Lampa.InteractionMain","native Lampa navigation missing");
 has("addMenu('Anime Lite'","sidebar menu missing");
 has("menu__ico","sidebar icon missing");
-has("anime_lite_ready_sources","duplicate-init guard missing");
+has("anime_lite_ready_quality","duplicate-init guard missing");
 
 // API/auth safety
 has("API='https://api.yani.tv'","Yani API missing");
@@ -52,6 +52,11 @@ has("Расписание выхода","schedule rail missing");
 has("api.jikan.moe/v4/anime","internet poster fallback missing");
 has("anime-lite-badge--eps","episode badge missing");
 has("anime-lite-badge--rating","rating badge missing");
+has("anime-lite-badge--quality","quality badge missing");
+has("function qualityShort(q)","short quality formatter missing");
+has("'4K'","4K quality label missing");
+has("'FHD'","FHD quality label missing");
+has("'HD'","HD quality label missing");
 has("anime-lite-badge--done","completion badge missing");
 has("anime-lite-badge--air","ongoing badge missing");
 has("anime-lite-badge--season","season count badge missing");
