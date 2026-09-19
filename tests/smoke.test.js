@@ -9,13 +9,13 @@ new vm.Script(src);
 assert(/^\(function\(\)\{'use strict';/.test(src),'plugin must stay wrapped in strict IIFE');
 
 // Current architecture
-has("VERSION='0.7.11-nav'","unexpected plugin version");
+has("VERSION='0.7.12-menu'","unexpected plugin version");
 has("Lampa.Component.add('anime_lite',Main)","main component not registered");
 has("Lampa.Component.add('anime_lite_results',Results)","results component not registered");
 has("new Lampa.InteractionMain","native Lampa navigation missing");
 has("addMenu('Anime Lite'","sidebar menu missing");
 has("menu__ico","sidebar icon missing");
-has("anime_lite_ready_panel11","duplicate-init guard missing");
+has("anime_lite_ready_menu12","duplicate-init guard missing");
 
 // API/auth safety
 has("API='https://api.yani.tv'","Yani API missing");
@@ -63,6 +63,7 @@ has("anime-lite-tools items-line","tools must be a controller row");
 has("anime-lite-tool card selector","tools must be controller cards");
 has("function toolMenu()","remote-accessible tools menu missing");
 no("addMenu('Поиск / Каталог'","duplicate sidebar tools entry must be removed");
+has("if(txt==='Поиск / Каталог')e.remove()","legacy sidebar item cleanup missing");
 has("focusKey","focus restoration state missing");
 has("collectionSet(card)","focus restoration call missing");
 has("naturalWidth","broken poster load verification missing");
