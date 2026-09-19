@@ -9,13 +9,13 @@ new vm.Script(src);
 assert(/^\(function\(\)\{'use strict';/.test(src),'plugin must stay wrapped in strict IIFE');
 
 // Current architecture
-has("VERSION='0.7.2-quality'","unexpected plugin version");
+has("VERSION='0.7.3-fix'","unexpected plugin version");
 has("Lampa.Component.add('anime_lite',Main)","main component not registered");
 has("Lampa.Component.add('anime_lite_results',Results)","results component not registered");
 has("new Lampa.InteractionMain","native Lampa navigation missing");
 has("addMenu('Anime Lite'","sidebar menu missing");
 has("menu__ico","sidebar icon missing");
-has("anime_lite_ready_quality","duplicate-init guard missing");
+has("anime_lite_ready_fix","duplicate-init guard missing");
 
 // API/auth safety
 has("API='https://api.yani.tv'","Yani API missing");
@@ -46,7 +46,10 @@ has("▶ Продолжить · серия ","resume action missing");
 has("function search()","anime search missing");
 has("/anime/genres","genres missing");
 has("/anime/schedule","schedule missing");
-has("Расписание выхода","schedule rail missing");
+has("function scheduleRows(schedule)","grouped schedule missing");
+has("Расписание · ","dated schedule rail missing");
+has("if(quiet&&self.empty)self.empty()","poll refresh must clear old rows");
+no("self.build([navRow()]","placeholder navigation cards must not be built");
 
 // Posters and UI
 has("api.jikan.moe/v4/anime","internet poster fallback missing");
