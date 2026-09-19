@@ -9,13 +9,13 @@ new vm.Script(src);
 assert(/^\(function\(\)\{'use strict';/.test(src),'plugin must stay wrapped in strict IIFE');
 
 // Current architecture
-has("VERSION='0.7.10-panel'","unexpected plugin version");
+has("VERSION='0.7.11-nav'","unexpected plugin version");
 has("Lampa.Component.add('anime_lite',Main)","main component not registered");
 has("Lampa.Component.add('anime_lite_results',Results)","results component not registered");
 has("new Lampa.InteractionMain","native Lampa navigation missing");
 has("addMenu('Anime Lite'","sidebar menu missing");
 has("menu__ico","sidebar icon missing");
-has("anime_lite_ready_panel10","duplicate-init guard missing");
+has("anime_lite_ready_panel11","duplicate-init guard missing");
 
 // API/auth safety
 has("API='https://api.yani.tv'","Yani API missing");
@@ -59,8 +59,10 @@ has("/anime/genres","genres missing");
 has("/anime/schedule","schedule missing");
 has("function scheduleRows(schedule)","grouped schedule missing");
 has("function toolsBar()","compact tools bar missing");
+has("anime-lite-tools items-line","tools must be a controller row");
+has("anime-lite-tool card selector","tools must be controller cards");
 has("function toolMenu()","remote-accessible tools menu missing");
-has("Поиск / Каталог","sidebar tools entry missing");
+no("addMenu('Поиск / Каталог'","duplicate sidebar tools entry must be removed");
 has("focusKey","focus restoration state missing");
 has("collectionSet(card)","focus restoration call missing");
 has("naturalWidth","broken poster load verification missing");
@@ -72,7 +74,10 @@ has("POSTER_ACTIVE<2","poster fallback concurrency limit missing");
 has("Расписание · ","dated schedule UI missing");
 no("if(quiet&&self.empty)self.empty()","polling must not trigger Lampa empty state");
 has("body.find('.items-line').remove()","row refresh missing");
-has("anime-lite-detail-poster","detail poster visual missing");
+has("anime-lite-side-poster","right panel poster missing");
+has("anime-lite-side-chips","right panel badges missing");
+has("anime-lite-side-actions","right panel actions missing");
+has("Lampa.Modal.open","visual right panel modal missing");
 no("scheduleRows(schedule).concat","schedule must not be mixed into home rows");
 no("self.build([navRow()]","placeholder navigation cards must not be built");
 
