@@ -1,1 +1,50 @@
-const fs=require('fs'),vm=require('vm'),assert=require('assert');const src=fs.readFileSync('index.js','utf8');new vm.Script(src);assert(src.includes("VERSION='0.1.1'"));assert(src.includes("Lampa.Controller.add('content'"));['up:function','down:function','left:function','right:function','focusAt','move(dx,dy)'].forEach(x=>assert(src.includes(x),'missing '+x));assert(!src.includes('InteractionMain'));assert(!src.includes('setInterval('));assert(!src.includes('Authorization'));assert(src.includes('backdrop-filter:none'));console.log('Anime Lite v0.1.1 compatibility tests passed');
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const src=fs.readFileSync('index.js','utf8');
+
+function has(x,msg){assert(src.includes(x),msg||('missing '+x))}
+function no(x,msg){assert(!src.includes(x),msg||('unexpected '+x))}
+
+// Parse/load-time safety
+new vm.Script(src);
+assert(/^\(function\(\)\{'use strict';/.test(src),'plugin must stay wrapped in strict IIFE');
+
+// Current architecture
+has("VERSION='0.6.3-ui1'","unexpected plugin version");
+has("Lampa.Component.add('anime_lite',Main)","main component not registered");
+has("Lampa.Component.add('anime_lite_results',Results)","results component not registered");
+has("new Lampa.InteractionMain","native Lampa navigation missing");
+has("addMenu('Anime Lite'","sidebar menu missing");
+has("menu__ico","sidebar icon missing");
+has("anime_lite_ready_ui1","duplicate-init guard missing");
+
+// API/auth safety
+has("API='https://api.yani.tv'","Yani API missing");
+has("'X-Application':APP","application header missing");
+no("Authorization","personal Bearer auth must not be embedded");
+
+// Refresh lifecycle
+has("POLL=60000","poll interval must be 60 seconds");
+has("setInterval(function(){draw(self,true)},POLL)","polling not wired");
+has("clearInterval(timer)","polling cleanup missing");
+
+// Features
+has("/anime/'+encodeURIComponent(c.yani_id)+'/videos","video loading missing");
+has("★ Авто — лучший источник","auto source selector missing");
+has("PROVIDER_SCORE","provider ranking missing");
+has("function search()","anime search missing");
+has("/anime/genres","genres missing");
+has("/anime/schedule","schedule missing");
+has("Расписание выхода","schedule rail missing");
+
+// Posters and UI
+has("api.jikan.moe/v4/anime","internet poster fallback missing");
+has("anime-lite-badge--eps","episode badge missing");
+has("anime-lite-badge--rating","rating badge missing");
+has("aspect-ratio:2/3","cinema poster ratio missing");
+has("backdrop-filter:none","heavy backdrop blur must stay disabled");
+
+// Basic regression guards
+assert(src.length<60000,'index.js unexpectedly large');
+assert((src.match(/setInterval\(/g)||[]).length===1,'unexpected extra polling loops');
+
+console.log('Anime Lite current smoke tests passed');
