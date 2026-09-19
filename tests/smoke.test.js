@@ -9,13 +9,13 @@ new vm.Script(src);
 assert(/^\(function\(\)\{'use strict';/.test(src),'plugin must stay wrapped in strict IIFE');
 
 // Current architecture
-has("VERSION='0.7.7-navfix'","unexpected plugin version");
+has("VERSION='0.7.8-visual'","unexpected plugin version");
 has("Lampa.Component.add('anime_lite',Main)","main component not registered");
 has("Lampa.Component.add('anime_lite_results',Results)","results component not registered");
 has("new Lampa.InteractionMain","native Lampa navigation missing");
 has("addMenu('Anime Lite'","sidebar menu missing");
 has("menu__ico","sidebar icon missing");
-has("anime_lite_ready_nav7","duplicate-init guard missing");
+has("anime_lite_ready_visual8","duplicate-init guard missing");
 
 // API/auth safety
 has("API='https://api.yani.tv'","Yani API missing");
@@ -44,6 +44,11 @@ has("function detailScreen(c,d)","cinema detail screen missing");
 has("function textVal(x,keys)","object metadata normalizer missing");
 has("function ratingVal(x)","rating normalizer missing");
 has("height:38vh","compact hero height missing");
+has("function homeHero(host,c)","dynamic home backdrop missing");
+has("function bindHero(host,rows)","card focus backdrop binding missing");
+has("anime-lite-home-bg","crossfade backdrop CSS missing");
+has("anime-lite-chip","detail metadata chips missing");
+has("anime-lite-action--primary","primary watch action missing");
 no("min-height:68vh","oversized old hero must not return");
 has("anime-lite-hero","detail backdrop hero missing");
 has("▶ Продолжить · серия ","resume action missing");
