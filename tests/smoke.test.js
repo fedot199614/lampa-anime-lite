@@ -9,13 +9,13 @@ new vm.Script(src);
 assert(/^\(function\(\)\{'use strict';/.test(src),'plugin must stay wrapped in strict IIFE');
 
 // Current architecture
-has("VERSION='0.6.5-auto'","unexpected plugin version");
+has("VERSION='0.7.0-cinema'","unexpected plugin version");
 has("Lampa.Component.add('anime_lite',Main)","main component not registered");
 has("Lampa.Component.add('anime_lite_results',Results)","results component not registered");
 has("new Lampa.InteractionMain","native Lampa navigation missing");
 has("addMenu('Anime Lite'","sidebar menu missing");
 has("menu__ico","sidebar icon missing");
-has("anime_lite_ready_auto","duplicate-init guard missing");
+has("anime_lite_ready_cinema","duplicate-init guard missing");
 
 // API/auth safety
 has("API='https://api.yani.tv'","Yani API missing");
@@ -36,6 +36,11 @@ has("function autoChoice(a)","smart auto-source chooser missing");
 has("Авто выбрал: ","auto-source disclosure missing");
 has("Приоритет источника","provider priority UI missing");
 has("preferred.length","preferred provider fallback logic missing");
+has("anime_lite_history","watch history storage missing");
+has("Продолжить просмотр","continue watching rail missing");
+has("function detailScreen(c,d)","cinema detail screen missing");
+has("anime-lite-hero","detail backdrop hero missing");
+has("▶ Продолжить · серия ","resume action missing");
 has("function search()","anime search missing");
 has("/anime/genres","genres missing");
 has("/anime/schedule","schedule missing");
