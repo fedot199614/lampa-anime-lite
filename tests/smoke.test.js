@@ -9,13 +9,13 @@ new vm.Script(src);
 assert(/^\(function\(\)\{'use strict';/.test(src),'plugin must stay wrapped in strict IIFE');
 
 // Current architecture
-has("VERSION='0.7.5-ui'","unexpected plugin version");
+has("VERSION='0.7.6-ux'","unexpected plugin version");
 has("Lampa.Component.add('anime_lite',Main)","main component not registered");
 has("Lampa.Component.add('anime_lite_results',Results)","results component not registered");
 has("new Lampa.InteractionMain","native Lampa navigation missing");
 has("addMenu('Anime Lite'","sidebar menu missing");
 has("menu__ico","sidebar icon missing");
-has("anime_lite_ready_ui5","duplicate-init guard missing");
+has("anime_lite_ready_ux6","duplicate-init guard missing");
 
 // API/auth safety
 has("API='https://api.yani.tv'","Yani API missing");
@@ -51,8 +51,14 @@ has("function search()","anime search missing");
 has("/anime/genres","genres missing");
 has("/anime/schedule","schedule missing");
 has("function scheduleRows(schedule)","grouped schedule missing");
-has("Расписание · ","dated schedule rail missing");
+has("function toolsBar()","compact tools bar missing");
+has("function openSchedule()","separate schedule screen missing");
+has("anime_lite_schedule","schedule component missing");
+has("anime-lite-tools","tools bar CSS missing");
+has("POSTER_ACTIVE<2","poster fallback concurrency limit missing");
+has("Расписание · ","dated schedule UI missing");
 has("if(quiet&&self.empty)self.empty()","poll refresh must clear old rows");
+no("scheduleRows(schedule).concat","schedule must not be mixed into home rows");
 no("self.build([navRow()]","placeholder navigation cards must not be built");
 
 // Posters and UI
