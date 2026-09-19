@@ -1,0 +1,1 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');const src=fs.readFileSync('index.js','utf8');new vm.Script(src);assert(src.includes("limit=24"));assert(src.includes("backdrop-filter:none"));assert(!src.includes("setInterval("));assert(!src.includes("Authorization"));assert(src.length<15000);console.log('Anime Lite static tests passed');
