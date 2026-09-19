@@ -9,13 +9,13 @@ new vm.Script(src);
 assert(/^\(function\(\)\{'use strict';/.test(src),'plugin must stay wrapped in strict IIFE');
 
 // Current architecture
-has("VERSION='0.7.6-ux'","unexpected plugin version");
+has("VERSION='0.7.7-navfix'","unexpected plugin version");
 has("Lampa.Component.add('anime_lite',Main)","main component not registered");
 has("Lampa.Component.add('anime_lite_results',Results)","results component not registered");
 has("new Lampa.InteractionMain","native Lampa navigation missing");
 has("addMenu('Anime Lite'","sidebar menu missing");
 has("menu__ico","sidebar icon missing");
-has("anime_lite_ready_ux6","duplicate-init guard missing");
+has("anime_lite_ready_nav7","duplicate-init guard missing");
 
 // API/auth safety
 has("API='https://api.yani.tv'","Yani API missing");
@@ -52,6 +52,12 @@ has("/anime/genres","genres missing");
 has("/anime/schedule","schedule missing");
 has("function scheduleRows(schedule)","grouped schedule missing");
 has("function toolsBar()","compact tools bar missing");
+has("function toolMenu()","remote-accessible tools menu missing");
+has("Поиск / Каталог","sidebar tools entry missing");
+has("focusKey","focus restoration state missing");
+has("collectionSet(card)","focus restoration call missing");
+has("naturalWidth","broken poster load verification missing");
+has("function enrichCards(cards)","badge metadata enrichment missing");
 has("function openSchedule()","separate schedule screen missing");
 has("anime_lite_schedule","schedule component missing");
 has("anime-lite-tools","tools bar CSS missing");
