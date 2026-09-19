@@ -1,0 +1,1 @@
+{"name":"lampa-anime-lite","version":"0.1.0","private":true,"scripts":{"test":"node tests/smoke.test.js","check":"node --check index.js"}}
